@@ -8,6 +8,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 find_package(SQLite3 REQUIRED)
 find_package(PkgConfig REQUIRED)
+find_package(Threads REQUIRED)
 
 pkg_check_modules(
     MOSQUITTO
@@ -26,6 +27,7 @@ target_link_libraries(gateway
     PRIVATE
     SQLite::SQLite3
     PkgConfig::MOSQUITTO
+    Threads::Threads
 )
 
 target_compile_options(gateway

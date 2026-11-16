@@ -3,7 +3,6 @@
 #include <cstdint>
 #include <string>
 
-// 前向声明SQLite类型
 struct sqlite3;
 struct sqlite3_stmt;
 
@@ -18,7 +17,6 @@ struct Telemetry {
     int device_counter;
 };
 
-// SQLite数据库管理类
 class Database {
 public:
     Database() = default;
@@ -29,9 +27,18 @@ public:
 
     bool open(const std::string& path);
     bool insert(const Telemetry& data);
+
+    // 新增：批量事务接口
+    bool beginTransaction();
+    bool commitTransaction();
+    bool rollbackTransaction();
+
     void close();
 
 private:
     sqlite3* db_ = nullptr;
     sqlite3_stmt* insert_stmt_ = nullptr;
+
+    // 记录当前是否存在尚未结束的批量事务
+    bool in_transaction_ = false;
 };
