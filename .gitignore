@@ -1,0 +1,16 @@
+build/
+**/build/
+*.db
+*.db-shm
+*.db-wal
+*.log
+.env
+.venv/
+__pycache__/
+*.py[cod]
+
+# Backup and temporary files
+*.bak
+*.swp
+*.swo
+.DS_Store
