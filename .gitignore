@@ -14,3 +14,7 @@ __pycache__/
 *.swp
 *.swo
 .DS_Store
+
+# A-W01 compiled executables
+/experiments/a-w01/producer_consumer
+/experiments/a-w01/producer_consumer_slow
